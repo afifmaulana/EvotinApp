@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         //isLoggedIn()
-        calon.setOnClickListener {
-            startActivity(Intent(this@MainActivity, CalonActivity::class.java))
-        }
+        calon.setOnClickListener { startActivity(Intent(this@MainActivity, CalonActivity::class.java)) }
+        hasil.setOnClickListener { startActivity(Intent(this@MainActivity, HasilActivity::class.java)) }
+
 
         pemilihanViewModel = ViewModelProvider(this).get(PemilihanViewModel::class.java)
         pemilihanViewModel.getPemilihan(Utilities.getToken(this@MainActivity)!!)

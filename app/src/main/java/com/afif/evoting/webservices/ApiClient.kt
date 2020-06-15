@@ -44,10 +44,15 @@ class ApiClient {
     }
 }
 
-interface ApiService{
+interface ApiService {
     @FormUrlEncoded
     @POST("api/siswa/login")
     fun login(@Field("email") email : String, @Field("password") password : String):Call<WrappedResponse<User>>
+
+    @GET("api/siswa/profile")
+    fun profile(
+        @Header("Authorization") token : String
+    ) : Call<WrappedResponse<User>>
 
     @GET("api/calon")
     fun getCalon(
@@ -67,10 +72,11 @@ interface ApiService{
         @Field("id_adminsekolah") id_adminsekolah : Int
     ) : Call<WrappedResponse<Hasil>>
 
-    @GET("api/siswa/profile")
-    fun profile(
-        @Header("Authorization") token : String
-    ) : Call<WrappedResponse<User>>
+    @GET("api/hasil")
+    fun hasil(
+        @Header("Authorization") token : String,
+        @Path("id_adminsekolah") id_adminsekolah : Int
+    ) : Call<WrappedListResponse<Hasil>>
 }
 
 data class WrappedResponse <T>(

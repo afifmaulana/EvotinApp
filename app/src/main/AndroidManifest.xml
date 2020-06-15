@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.VotingActivity"></activity>
+        <activity android:name=".activities.HasilActivity"></activity>
+        <activity android:name=".activities.VotingActivity" />
         <activity android:name=".activities.DetailCalonActivty" />
         <activity android:name=".activities.CalonActivity" />
         <activity android:name=".activities.MainActivity" />
