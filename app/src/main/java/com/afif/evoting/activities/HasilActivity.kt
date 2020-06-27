@@ -19,21 +19,16 @@ import kotlinx.android.synthetic.main.activity_hasil.*
 class HasilActivity : AppCompatActivity() {
 
     private lateinit var hasilViewModel : HasilViewModel
-    private lateinit var userViewModel: UserViewModel
-
-    private var id_admin_sekolah : String? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hasil)
         rv_hasil.apply {
             adapter = HasilAdapter(mutableListOf(), this@HasilActivity)
-            layoutManager = LinearLayoutManager(this@HasilActivity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(this@HasilActivity)
         }
 
         hasilViewModel = ViewModelProvider(this).get(HasilViewModel::class.java)
-        userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
 
         hasilViewModel.listenToState().observer(this, Observer { handleUI(it) })
@@ -44,8 +39,6 @@ class HasilActivity : AppCompatActivity() {
                 }
             }
         })
-
-        userViewModel.getUser().observe(this, Observer { handleUser(it) })
     }
 
     private fun handleUI(it : HasilState){
@@ -64,14 +57,10 @@ class HasilActivity : AppCompatActivity() {
         }
     }
 
-    private fun handleUser(it : User){
-        hasilViewModel.getHasil(Utilities.getToken(this@HasilActivity)!!, it.id_adminsekolah.toString())
-    }
-
     private fun toast(m : String) = Toast.makeText(this@HasilActivity, m, Toast.LENGTH_LONG).show()
 
     override fun onResume() {
         super.onResume()
-        userViewModel.profile(Utilities.getToken(this@HasilActivity)!!)
+        hasilViewModel.getHasil(Utilities.getToken(this@HasilActivity)!!)
     }
 }

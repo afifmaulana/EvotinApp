@@ -74,8 +74,7 @@ interface ApiService {
 
     @GET("api/hasil")
     fun hasil(
-        @Header("Authorization") token : String,
-        @Path("id_adminsekolah") id_adminsekolah : Int
+        @Header("Authorization") token : String
     ) : Call<WrappedListResponse<Hasil>>
 }
 

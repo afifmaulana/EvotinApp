@@ -15,6 +15,7 @@
         <activity android:name=".activities.VotingActivity" />
         <activity android:name=".activities.DetailCalonActivty" />
         <activity android:name=".activities.CalonActivity" />
+        <activity android:name=".activities.ProfileActivity"/>
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>

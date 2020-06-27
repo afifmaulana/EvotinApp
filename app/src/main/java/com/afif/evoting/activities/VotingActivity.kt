@@ -33,7 +33,6 @@ class VotingActivity : AppCompatActivity() {
         }
         calonViewModel = ViewModelProvider(this).get(CalonViewModel::class.java)
         calonViewModel.getCalon(Utilities.getToken(this@VotingActivity)!!)
-        println("token : ${Utilities.getToken(this@VotingActivity)}")
         calonViewModel.getCalons().observe(this, Observer {
             rv_voting.adapter?.let {adapter ->
                 if (adapter is VotingAdapter){

@@ -86,7 +86,7 @@ class UserViewModel : ViewModel(){
     }
 
     fun listenUIState() = state
-    fun getUser() = user
+    fun listenToUser() = user
 
 }
 

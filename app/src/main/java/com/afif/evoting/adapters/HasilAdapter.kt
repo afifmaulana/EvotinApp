@@ -15,7 +15,8 @@ class HasilAdapter (private var hasils : MutableList<Hasil>, private var context
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         fun bind(hasil: Hasil, context: Context){
             with(itemView){
-                txt_calon_ketua.text = hasil.id_calon.toString()
+                txt_calon_ketua.text = hasil.calon.ketua.name
+                txt_calon_wakil.text = hasil.calon.wakil.name
                 txt_total.text = hasil.total.toString()
             }
         }

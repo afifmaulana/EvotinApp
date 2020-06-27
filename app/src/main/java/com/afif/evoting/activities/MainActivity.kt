@@ -29,14 +29,14 @@ class MainActivity : AppCompatActivity() {
         //isLoggedIn()
         calon.setOnClickListener { startActivity(Intent(this@MainActivity, CalonActivity::class.java)) }
         hasil.setOnClickListener { startActivity(Intent(this@MainActivity, HasilActivity::class.java)) }
-
+        profil.setOnClickListener { startActivity(Intent(this@MainActivity, ProfileActivity::class.java)) }
 
         pemilihanViewModel = ViewModelProvider(this).get(PemilihanViewModel::class.java)
         pemilihanViewModel.getPemilihan(Utilities.getToken(this@MainActivity)!!)
         pemilihanViewModel.getState().observer(this, Observer { handlePemilihan(it) })
 
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        userViewModel.getUser().observe(this, Observer { handleUser(it) })
+        userViewModel.listenToUser().observe(this, Observer { handleUser(it) })
     }
 
     private fun handleUser(it: User) {

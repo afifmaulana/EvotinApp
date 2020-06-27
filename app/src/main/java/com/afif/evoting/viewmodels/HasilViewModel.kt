@@ -19,9 +19,9 @@ class HasilViewModel : ViewModel(){
     private fun hideLoading() { state.value = HasilState.IsLoading(false) }
     private fun toast(message: String) { state.value = HasilState.ShowToast(message) }
 
-    fun getHasil(token : String, id_admin_sekolah : String){
+    fun getHasil(token : String){
         setLoading()
-        api.hasil(token, id_admin_sekolah.toInt()).enqueue(object : Callback<WrappedListResponse<Hasil>>{
+        api.hasil(token).enqueue(object : Callback<WrappedListResponse<Hasil>>{
             override fun onFailure(call: Call<WrappedListResponse<Hasil>>, t: Throwable) {
                 hideLoading()
                 println(t.message)
