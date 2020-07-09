@@ -1,93 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/grad_home"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
 
+
+   <FrameLayout
+       android:background="@drawable/grad_home"
+       android:layout_width="match_parent"
+       android:layout_height="370dp"/>
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo"
+        android:layout_width="120dp"
+        android:layout_height="120dp"/>
+
     <TextView
-        android:text="I am home"
-        android:id="@+id/text_home"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/img_logo"
+        android:text="Aplikasi Voting OSIS"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"/>
 
-    <ImageView
-        android:id="@+id/calon"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="120dp"
-        android:padding="10dp"
-        android:src="@drawable/lihat_calon"
-        android:background="@drawable/bgcolor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.241"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lihat Calon"
-        app:layout_constraintEnd_toEndOf="@+id/calon"
-        app:layout_constraintStart_toStartOf="@+id/calon"
-        app:layout_constraintTop_toBottomOf="@id/calon" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_one"
+        android:elevation="2dp"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="8dp"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Voting"
-        app:layout_constraintEnd_toEndOf="@+id/voting"
-        app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="@+id/voting"
-        app:layout_constraintTop_toBottomOf="@id/voting" />
 
-    <ImageView
-        android:id="@+id/voting"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="120dp"
-        android:src="@drawable/voting"
-        android:background="@drawable/bgcolor"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
-        app:layout_constraintStart_toEndOf="@+id/calon"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/hasil"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:padding="10dp"
-        android:layout_marginTop="328dp"
-        android:src="@drawable/hasil"
-        android:background="@drawable/bgcolor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.241"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/profil"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:padding="10dp"
-        android:layout_marginTop="328dp"
-        android:src="@drawable/calon"
-        android:background="@drawable/bgcolor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.824"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/calon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/lihat_calon"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:text="Calon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:padding="5dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/voting"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/voting" />
+
+                <TextView
+                    android:text="voting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/hasil"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/hasil" />
+
+                <TextView
+                    android:text="Hasil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/profil"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/profil" />
+
+                <TextView
+                    android:text="Akun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_below="@id/card_one"
+        android:id="@+id/card_two"
+        android:elevation="2dp"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="KETENTUAN MENJADI KETUA DAN WAKIL OSIS"
+            android:textSize="17dp"
+            android:gravity="center_horizontal"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calon dianggap sah apabila memenuhi kriteria berikut :"
+                android:textSize="14dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_horizontal"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="14dp"
+                android:text="1. Taqwa kepada Tuhan Yang Maha ESA"
+                android:textSize="14dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:text="2. Mempunyai kejujuran dan kesanggupan kerja"
+                android:textSize="14dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:text="3. Tidak menjabat ketua Organisasi lain"
+                android:textSize="14dp"
+                android:layout_marginBottom="12dp"/>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:text="LOGOUT"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/card_two"/>
+
+</RelativeLayout>

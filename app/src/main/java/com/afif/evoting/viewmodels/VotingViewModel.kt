@@ -17,7 +17,7 @@ class VotingViewModel : ViewModel(){
     private fun toast(message: String) { state.value = VotingState.ShowToast(message) }
     private fun setLoading() { state.value = VotingState.IsLoading(true) }
     private fun hideLoading() { state.value = VotingState.IsLoading(false) }
-    private fun success() { state.value = VotingState.Success }
+    private fun success(message: String) { state.value = VotingState.Success(message) }
 
     fun voting(token : String, id_calon : String, id_adminsekolah : String){
         setLoading()
@@ -31,8 +31,8 @@ class VotingViewModel : ViewModel(){
                 if (response.isSuccessful){
                     val body = response.body()
                     if (body?.status!!){
-                        success()
-                        toast("terima kasih anda telah memilih")
+                        //toast("terima kasih anda telah memilih")
+                        success("terima kasih anda telah memilih")
                     }else{
                         println(body.message)
                     }
@@ -50,5 +50,5 @@ class VotingViewModel : ViewModel(){
 sealed class VotingState{
     data class IsLoading(var state : Boolean = false) : VotingState()
     data class ShowToast(var message : String) : VotingState()
-    object Success : VotingState()
+    data class Success(var message: String) : VotingState()
 }

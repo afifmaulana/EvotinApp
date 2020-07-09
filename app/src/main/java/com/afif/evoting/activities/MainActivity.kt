@@ -3,6 +3,7 @@ package com.afif.evoting.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
@@ -30,7 +31,11 @@ class MainActivity : AppCompatActivity() {
         calon.setOnClickListener { startActivity(Intent(this@MainActivity, CalonActivity::class.java)) }
         hasil.setOnClickListener { startActivity(Intent(this@MainActivity, HasilActivity::class.java)) }
         profil.setOnClickListener { startActivity(Intent(this@MainActivity, ProfileActivity::class.java)) }
-
+        btn_logout.setOnClickListener {
+            Utilities.clearToken(this@MainActivity)
+            startActivity(Intent(this@MainActivity,LoginActivity::class.java))
+            this@MainActivity.finish()
+        }
         pemilihanViewModel = ViewModelProvider(this).get(PemilihanViewModel::class.java)
         pemilihanViewModel.getPemilihan(Utilities.getToken(this@MainActivity)!!)
         pemilihanViewModel.getState().observer(this, Observer { handlePemilihan(it) })
@@ -73,6 +78,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toast(message: String) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+
+
 
 //    private fun isLoggedIn(){
 //        if(Utilities.getToken(this@MainActivity) != null){

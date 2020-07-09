@@ -41,15 +41,17 @@ class VotingActivity : AppCompatActivity() {
             }
         })
         calonViewModel.getState().observer(this, Observer { handleui(it) })
-
         votingViewModel.getState().observer(this, Observer { handleUIVoting(it) })
     }
 
     private fun handleUIVoting(it : VotingState){
         when(it){
-            is VotingState.IsLoading -> btn_voting.isEnabled = !it.state
-            is VotingState.ShowToast -> toast(it.message)
-            is VotingState.Success -> finish()
+            //is VotingState.IsLoading -> btn_voting.isEnabled = !it.state
+            //is VotingState.ShowToast -> toast(it.message)
+            is VotingState.Success -> {
+                toast(it.message)
+                finish()
+            }
         }
     }
 

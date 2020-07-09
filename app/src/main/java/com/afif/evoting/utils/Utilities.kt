@@ -18,6 +18,11 @@ class Utilities {
             }
         }
 
+        fun clearToken(context: Context){
+            val pref = context.getSharedPreferences("USER",Context.MODE_PRIVATE)
+            pref.edit().clear().apply()
+        }
+
         fun isValidEmail(email : String) : Boolean = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
         fun isValidPassword(password : String) = password.length >= 8
     }

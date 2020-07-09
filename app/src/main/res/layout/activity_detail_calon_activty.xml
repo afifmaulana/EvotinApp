@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_color"
+    android:background="@drawable/grad_home"
     tools:context=".activities.DetailCalonActivty">
 
     <ImageView
@@ -41,6 +41,7 @@
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -53,7 +54,6 @@
             <TextView
                 android:id="@+id/tv_ketua"
                 android:text="Nama Ketua"
-                android:padding="10dp"
                 android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -63,6 +63,7 @@
         <LinearLayout
             android:layout_weight="1"
             android:orientation="vertical"
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -75,7 +76,6 @@
             <TextView
                 android:id="@+id/tv_wakil"
                 android:text="Nama Wakil"
-                android:padding="10dp"
                 android:textSize="20sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
@@ -95,6 +95,7 @@
         android:id="@+id/tv_visi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:textAppearance="@android:style/TextAppearance.Small"/>
 
     <TextView
@@ -108,6 +109,7 @@
         android:id="@+id/tv_misi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:textAppearance="@android:style/TextAppearance.Small"/>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
@@ -24,7 +25,7 @@ class VotingAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(calon: Calon, context: Context, votingViewModel: VotingViewModel) {
             with(itemView) {
-                iv_foto_calon.load("https://evoting-osis.herokuapp.com/uploads/adminsekolah/" + calon.foto)
+                iv_foto_calon.load(calon.foto)
                 tv_calon_ketua.text = calon.ketua.name
                 tv_calon_wakil.text = calon.wakil.name
 
@@ -32,18 +33,17 @@ class VotingAdapter(
                     AlertDialog.Builder(context).apply {
                         setMessage("apakah anda yakin ingin memilih calon ini?")
                         setPositiveButton("Ya") { dialog, which ->
-                            votingViewModel.voting(Utilities.getToken(context)!!, calon.id.toString(), calon.adminsekolah.id.toString()
-                            )
+                            votingViewModel.voting(Utilities.getToken(context)!!, calon.id.toString(), calon.adminsekolah.id.toString())
                         }
-                        setNegativeButton("Tidak") { dialog, _ -> dialog.cancel() }.create().show()
-                    }
+                        setNegativeButton("Tidak") { dialog, _ -> dialog.cancel() }
+                    }.create().show()
                 }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_voting, parent, false))
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_voting, parent, false))
     }
 
     override fun getItemCount(): Int = calons.size

@@ -18,7 +18,7 @@ class CalonAdapter(private var calons : MutableList<Calon>, private var context:
     class ViewHolder(itemView :View) : RecyclerView.ViewHolder(itemView){
         fun bind(calon : Calon, context: Context){
             with(itemView){
-                iv_foto_calon.load("https://evoting-osis.herokuapp.com/uploads/adminsekolah/"+calon.foto)
+                iv_foto_calon.load(calon.foto)
                 tv_calon_ketua.text = calon.ketua.name
                 tv_calon_wakil.text = calon.wakil.name
                 setOnClickListener {
