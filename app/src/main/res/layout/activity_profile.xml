@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -33,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Afif Maulana Iskandar"
+            android:text="Profil"
             android:layout_below="@+id/img_profile"
             android:textSize="22sp"
             android:textColor="@color/grey"/>
@@ -122,19 +123,13 @@
                     android:textSize="20sp"
                     android:textColor="@color/headings"/>
 
-                <TextView
-                    android:id="@+id/tv_password"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="*********"
+                    android:hint="********"
                     android:textSize="20sp"
                     android:textColor="@color/headings"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="3dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/grey"/>
 
             </LinearLayout>
 
@@ -142,6 +137,7 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/btn_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

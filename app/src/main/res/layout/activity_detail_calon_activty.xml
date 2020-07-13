@@ -1,115 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/grad_home"
+    android:orientation="vertical"
     tools:context=".activities.DetailCalonActivty">
 
-    <ImageView
-        android:id="@+id/img_calon"
-        android:src="@drawable/img_calon"
-        android:layout_marginBottom="5dp"
-        android:scaleType="centerCrop"
-        android:layout_width="match_parent"
-        android:layout_height="190dp"/>
-
-    <TextView
-        android:id="@+id/tv_detail"
-        android:text="DETAIL CALON"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <View
-        android:background="@android:color/black"
-        android:visibility="visible"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"/>
-
     <LinearLayout
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+
+        <ImageView
+            android:id="@+id/img_calon"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginBottom="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img_calon" />
 
         <LinearLayout
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:text="Nama Ketua"
-                android:textSize="20sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/tv_ketua"
-                android:text="Nama Ketua"
-                android:textSize="20sp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Ketua"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_ketua"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Ketua"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama Wakil"
+                    android:gravity="center"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_wakil"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Nama Wakil"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:padding="10dp"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="2dp"
+            android:background="@android:color/black"
+            android:visibility="visible" />
 
-            <TextView
-                android:text="Nama Wakil"
-                android:textSize="20sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
-            <TextView
-                android:id="@+id/tv_wakil"
-                android:text="Nama Wakil"
-                android:textSize="20sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
-        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Visi : "
+            android:textSize="20sp" />
+
+        <org.sufficientlysecure.htmltextview.HtmlTextView
+            android:id="@+id/tv_visi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textAppearance="@android:style/TextAppearance.Small" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Misi : "
+            android:textSize="20sp" />
+
+        <org.sufficientlysecure.htmltextview.HtmlTextView
+            android:id="@+id/tv_misi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textAppearance="@android:style/TextAppearance.Small" />
+
 
     </LinearLayout>
-
-    <TextView
-        android:text="Visi : "
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <org.sufficientlysecure.htmltextview.HtmlTextView
-        android:id="@+id/tv_visi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textAppearance="@android:style/TextAppearance.Small"/>
-
-    <TextView
-        android:text="Misi : "
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <org.sufficientlysecure.htmltextview.HtmlTextView
-        android:id="@+id/tv_misi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textAppearance="@android:style/TextAppearance.Small"/>
-
-</LinearLayout>
+</ScrollView>

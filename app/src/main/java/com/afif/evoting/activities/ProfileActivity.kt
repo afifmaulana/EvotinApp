@@ -3,6 +3,7 @@ package com.afif.evoting.activities
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +24,27 @@ class ProfileActivity : AppCompatActivity(){
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.listenUIState().observer(this, Observer { handleUI(it) })
         userViewModel.listenToUser().observe(this, Observer { handleUser(it) })
+        doUpdatePassword()
+    }
+
+    private fun doUpdatePassword(){
+        btn_password.setOnClickListener {
+            val pass = et_password.text.toString().trim()
+            if(pass.isNotEmpty() && pass.length >= 6){
+                userViewModel.updatePassword(Utilities.getToken(this@ProfileActivity)!!, pass)
+            }else{
+                showAlert("Password minimal enam karakter")
+            }
+        }
+    }
+
+    private fun showAlert(message: String){
+        AlertDialog.Builder(this).apply {
+            setMessage(message)
+            setPositiveButton("OK"){ d, _ ->
+                d.dismiss()
+            }
+        }.show()
     }
 
     private fun handleUI(it : UserState){
@@ -34,7 +56,7 @@ class ProfileActivity : AppCompatActivity(){
                     pb_profile.visibility = View.GONE
                 }
             }
-
+            is UserState.Success -> finish()
             is UserState.ShowToast -> toast(it.message)
         }
     }

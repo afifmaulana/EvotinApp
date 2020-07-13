@@ -76,6 +76,12 @@ interface ApiService {
     fun hasil(
         @Header("Authorization") token : String
     ) : Call<WrappedListResponse<Hasil>>
+
+    @FormUrlEncoded
+    @POST("api/siswa/update/password")
+    fun updatePassword(@Header("Authorization") token: String,
+                       @Field("password") password: String)
+            : Call<WrappedResponse<User>>
 }
 
 data class WrappedResponse <T>(

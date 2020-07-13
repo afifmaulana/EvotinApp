@@ -85,6 +85,31 @@ class UserViewModel : ViewModel(){
         return true
     }
 
+    fun updatePassword(token: String, aNewPassword: String){
+        state.value = UserState.IsLoading(true)
+        api.updatePassword(token, aNewPassword).enqueue(object : Callback<WrappedResponse<User>>{
+            override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
+                println(t.message)
+                state.value = UserState.IsLoading(false)
+            }
+
+            override fun onResponse(call: Call<WrappedResponse<User>>, response: Response<WrappedResponse<User>>) {
+                if (response.isSuccessful){
+                    val body = response.body()
+                    if (body?.status!!){
+                        state.value = UserState.Success("")
+                    }else{
+                        state.value = UserState.Success(body.message)
+                    }
+                }else{
+                    state.value = UserState.Success(response.message())
+                }
+                state.value = UserState.IsLoading(false)
+            }
+
+        })
+    }
+
     fun listenUIState() = state
     fun listenToUser() = user
 

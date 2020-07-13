@@ -34,6 +34,7 @@
             <TextView
                 android:id="@+id/tv_calon_ketua"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textSize="18sp"
                 android:text="Ketua"
                 android:layout_width="wrap_content"
@@ -42,6 +43,7 @@
             <TextView
                 android:id="@+id/tv_calon_wakil"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:textSize="18sp"
                 android:text="Wakil"
                 android:layout_width="wrap_content"

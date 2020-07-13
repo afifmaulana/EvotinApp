@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_login"
+    android:background="@drawable/grad_home"
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity">
 
@@ -15,10 +15,11 @@
         <ImageView
             android:layout_centerHorizontal="true"
             android:id="@+id/logo"
-            android:layout_width="340dp"
+            android:layout_width="170dp"
             android:background="@drawable/logo"
-            android:layout_height="250dp"
-            android:layout_marginTop="52dp" />
+            android:layout_height="140dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginBottom="40dp"/>
 
         <LinearLayout
             android:id="@+id/title"
@@ -83,7 +84,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/in_password"
+                app:boxBackgroundColor="@android:color/black"
                 app:errorEnabled="true"
+                app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -93,6 +96,7 @@
                     android:drawableLeft="@drawable/ic_person"
                     android:hint="Masukkan Password"
                     android:inputType="textPassword"
+
                     android:layout_gravity="center"
                     android:layout_width="300dp"
                     android:layout_height="50dp"/>

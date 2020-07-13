@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     private fun popup(message: String) {
         AlertDialog.Builder(this@MainActivity).apply {
             setMessage(message)
-            setPositiveButton("Ya") { dialog, which -> dialog.dismiss() }
+            setPositiveButton("OK") { dialog, which -> dialog.dismiss() }
         }.show()
     }
 

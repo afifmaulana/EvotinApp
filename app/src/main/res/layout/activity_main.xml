@@ -66,7 +66,8 @@
                     android:src="@drawable/lihat_calon"/>
 
                 <TextView
-                    android:text="Calon"
+                    android:text="Visi Misi"
+                    android:textColor="@color/headings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -89,10 +90,10 @@
                     android:src="@drawable/voting" />
 
                 <TextView
-                    android:text="voting"
+                    android:text="Vote"
+                    android:textColor="@color/headings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-
             </LinearLayout>
 
             <LinearLayout
@@ -113,6 +114,7 @@
 
                 <TextView
                     android:text="Hasil"
+                    android:textColor="@color/headings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -136,6 +138,7 @@
 
                 <TextView
                     android:text="Akun"
+                    android:textColor="@color/headings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
@@ -162,16 +165,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:text="KETENTUAN MENJADI KETUA DAN WAKIL OSIS"
-            android:textSize="17dp"
+            android:textSize="14dp"
             android:gravity="center_horizontal"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Calon dianggap sah apabila memenuhi kriteria berikut :"
-                android:textSize="14dp"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_horizontal"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -201,7 +199,7 @@
     <Button
         android:id="@+id/btn_logout"
         android:text="LOGOUT"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_centerHorizontal="true"

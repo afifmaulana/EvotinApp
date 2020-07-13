@@ -16,7 +16,7 @@ class DetailCalonActivty : AppCompatActivity() {
         tv_wakil.text = getPassedCalon()?.wakil!!.name
         tv_visi.setHtml(getPassedCalon()?.visi.toString())
         tv_misi.setHtml(getPassedCalon()?.misi.toString())
-        img_calon.load("https://evoting-osis.herokuapp.com/uploads/adminsekolah/"+getPassedCalon()?.foto)
+        img_calon.load(getPassedCalon()?.foto)
     }
     private fun getPassedCalon() : Calon? = intent.getParcelableExtra("CALON")
 }
