@@ -24,6 +24,6 @@ class Utilities {
         }
 
         fun isValidEmail(email : String) : Boolean = android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
-        fun isValidPassword(password : String) = password.length >= 8
+        fun isValidPassword(password : String) = password.length >= 6
     }
 }

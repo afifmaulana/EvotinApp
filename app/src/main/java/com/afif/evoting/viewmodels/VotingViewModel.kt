@@ -23,7 +23,6 @@ class VotingViewModel : ViewModel(){
         setLoading()
         api.voting(token, id_calon.toInt(), id_adminsekolah.toInt()).enqueue(object : Callback<WrappedResponse<Hasil>>{
             override fun onFailure(call: Call<WrappedResponse<Hasil>>, t: Throwable) {
-                println(t.message)
                 hideLoading()
             }
 
@@ -34,10 +33,10 @@ class VotingViewModel : ViewModel(){
                         //toast("terima kasih anda telah memilih")
                         success("terima kasih anda telah memilih")
                     }else{
-                        println(body.message)
+                        //println(body.message)
                     }
                 }else{
-                    println(response.message())
+                    //println(response.message())
                 }
                 hideLoading()
             }

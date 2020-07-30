@@ -27,7 +27,6 @@ class CalonActivity : AppCompatActivity() {
         }
         calonViewModel = ViewModelProvider(this).get(CalonViewModel::class.java)
         calonViewModel.getCalon(Utilities.getToken(this@CalonActivity)!!)
-        println("token : ${Utilities.getToken(this@CalonActivity)}")
         calonViewModel.getCalons().observe(this, Observer {
             rv_calon.adapter?.let {adapter ->
                 if (adapter is CalonAdapter){
@@ -38,9 +37,7 @@ class CalonActivity : AppCompatActivity() {
                 }
             }
         })
-        calonViewModel.getState().observer(this, Observer {
-            handleui(it)
-        })
+        calonViewModel.getState().observer(this, Observer { handleui(it) })
 
     }
 
@@ -56,7 +53,6 @@ class CalonActivity : AppCompatActivity() {
                 }
             }
             is CalonState.ShowToast -> toast(it.message)
-
         }
     }
 

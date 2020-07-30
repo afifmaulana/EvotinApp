@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.afif.evoting.R
+import com.afif.evoting.models.Profile
 import com.afif.evoting.models.User
 import com.afif.evoting.utils.Utilities
 import com.afif.evoting.viewmodels.UserState
@@ -23,8 +24,13 @@ class ProfileActivity : AppCompatActivity(){
         setContentView(R.layout.activity_profile)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         userViewModel.listenUIState().observer(this, Observer { handleUI(it) })
-        userViewModel.listenToUser().observe(this, Observer { handleUser(it) })
+        userViewModel.listenToProfile().observe(this, Observer { handleProfile(it) })
         doUpdatePassword()
+    }
+
+    private fun handleProfile(it: Profile) {
+        tv_nama.text = it.name
+        tv_email.text = it.email
     }
 
     private fun doUpdatePassword(){
@@ -59,11 +65,6 @@ class ProfileActivity : AppCompatActivity(){
             is UserState.Success -> finish()
             is UserState.ShowToast -> toast(it.message)
         }
-    }
-
-    private fun handleUser(it : User){
-        tv_nama.text = it.name
-        tv_email.text = it.email
     }
 
     private fun toast(message : String) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()

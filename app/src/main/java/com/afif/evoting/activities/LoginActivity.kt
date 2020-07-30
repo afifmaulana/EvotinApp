@@ -40,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
     private fun setErrorPassword(err : String?) { in_password.error = err}
     private fun handleState(it: UserState){
         when(it){
-            //is UserState.ShowAlert -> showAlert(it.message)
+            is UserState.Alert -> showAlert(it.message)
             is UserState.ShowToast -> toast(it.message)
             is UserState.IsLoading -> {
                 if (it.state){
@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
     private fun showAlert(message: String){
         AlertDialog.Builder(this).apply {
             setMessage(message)
-            setPositiveButton("Mengerti") { dialog, which ->
+            setPositiveButton("Mengerti") { dialog, _ ->
                 dialog.dismiss()
             }
         }.show()

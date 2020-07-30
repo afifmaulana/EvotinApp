@@ -20,23 +20,18 @@ class CalonViewModel : ViewModel() {
         api.getCalon(token).enqueue(object : Callback<WrappedListResponse<Calon>>{
             override fun onFailure(call: Call<WrappedListResponse<Calon>>, t: Throwable) {
                 state.value = CalonState.ShowToast("OnFailure : ${t.message}")
-                println("OnFailure : ${t.message}")
             }
 
             override fun onResponse(call: Call<WrappedListResponse<Calon>>, response: Response<WrappedListResponse<Calon>>) {
                 if (response.isSuccessful){
-                    println("response berhasil ${response.message()}")
                     val body = response.body()
                     if (body?.status!!){
-                        println("body berhasil ${body.message}")
                         val data = body.data
                         calons.postValue(data)
                     }else{
-                        println("Tidak dapat mengambil data ${body.message}")
                         state.value = CalonState.ShowToast("Tidak dapat mengambil data")
                     }
                 }else{
-                    print("response tidak berhasil ${response.message()}")
                     state.value = CalonState.ShowToast("response tidak berhasil ${response.message()}")
                 }
                 state.value = CalonState.IsLoading(false)

@@ -2,6 +2,7 @@ package com.afif.evoting.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.afif.evoting.models.Profile
 import com.afif.evoting.models.User
 import com.afif.evoting.utils.SingleLiveEvent
 import com.afif.evoting.utils.Utilities
@@ -14,61 +15,71 @@ import retrofit2.Response
 class UserViewModel : ViewModel(){
     private var api = ApiClient.instance()
     private var state : SingleLiveEvent<UserState> = SingleLiveEvent()
-    private var user = MutableLiveData<User>()
+    private var user = MutableLiveData<User?>()
+    private var profile = MutableLiveData<Profile>()
+    private var flagStatus = MutableLiveData<Boolean?>(null)
 
     fun login (email: String, password: String){
-        println("email : ${email}")
-        println("pass : ${password}")
         state.value = UserState.IsLoading(true)
         api.login(email, password).enqueue(object : Callback<WrappedResponse<User>>{
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
-                println("OnFailure : ${t.message}")
+                println("failure  ${t.message}")
                 state.value = UserState.IsLoading(false)
             }
             override fun onResponse(call: Call<WrappedResponse<User>>, response: Response<WrappedResponse<User>>) {
                 if (response.isSuccessful){
-                    println("response : ${response.message()}")
                     val body = response.body()
                     if (body?.status!!){
-                        println("body ${body.message}")
                         state.value = UserState.Success(body.data.token!!)
                     }else{
-                        println("body salah ${body.message}")
                         state.value = UserState.ShowToast("Login Gagal")
                     }
                 }else{
-                    state.value = UserState.ShowToast("respone laka brooo")
+                    state.value = UserState.Alert("masukan email dan password dengan benar")
                 }
                 state.value = UserState.IsLoading(false)
             }
-
         })
     }
 
+    private fun setFlagStatusToNull() {
+        flagStatus.value = null
+    }
+
+    private fun setFlagStatusToBool(b: Boolean){
+        flagStatus.value = b
+    }
+
+    private fun toast(message: String){
+        state.value = UserState.ShowToast(message)
+    }
+
     fun profile(token: String){
+        setFlagStatusToNull()
         state.value = UserState.IsLoading(true)
-        api.profile(token).enqueue(object : Callback<WrappedResponse<User>>{
-            override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
-                println(t.message)
+        api.profile(token).enqueue(object : Callback<WrappedResponse<Profile>>{
+            override fun onFailure(call: Call<WrappedResponse<Profile>>, t: Throwable) {
                 state.value = UserState.IsLoading(false)
+                toast(t.message.toString())
             }
 
-            override fun onResponse(call: Call<WrappedResponse<User>>, response: Response<WrappedResponse<User>>) {
+            override fun onResponse(call: Call<WrappedResponse<Profile>>, response: Response<WrappedResponse<Profile>>) {
                 if (response.isSuccessful){
                     val body = response.body()
                     if (body?.status!!){
                         val data = body.data
-                        println("status ${data.status}")
-                        user.postValue(data)
+                        profile.postValue(data)
+                        setFlagStatusToBool(data.status)
                     }else{
-                        println("body ${body.message}")
+                        setFlagStatusToBool(false)
+                        state.value = UserState.ShowToast(body.message)
                     }
                 }else{
-                    println("response ${response.message()}")
+                    setFlagStatusToBool(false)
+                    state.value = UserState.ShowToast(response.message())
                 }
                 state.value = UserState.IsLoading(false)
             }
-
         })
     }
 
@@ -89,7 +100,6 @@ class UserViewModel : ViewModel(){
         state.value = UserState.IsLoading(true)
         api.updatePassword(token, aNewPassword).enqueue(object : Callback<WrappedResponse<User>>{
             override fun onFailure(call: Call<WrappedResponse<User>>, t: Throwable) {
-                println(t.message)
                 state.value = UserState.IsLoading(false)
             }
 
@@ -110,17 +120,21 @@ class UserViewModel : ViewModel(){
         })
     }
 
+
+    fun getFlagStatus() = flagStatus
     fun listenUIState() = state
-    fun listenToUser() = user
+    //fun listenToUser() = user
+    fun listenToProfile() = profile
+    //fun listenToSekolah() = user
 
 }
 
 sealed class UserState {
     object Reset : UserState()
-    data class ShowAlert(var message : String) : UserState()
     data class IsLoading(var state : Boolean) : UserState()
     data class ShowToast(var message : String) : UserState()
     data class Validate(var email : String? = null, var password : String? = null) : UserState()
     data class Success(var token : String) : UserState()
     data class SuccessVoting(var status: Boolean) : UserState()
+    data class Alert(var message : String) : UserState()
 }

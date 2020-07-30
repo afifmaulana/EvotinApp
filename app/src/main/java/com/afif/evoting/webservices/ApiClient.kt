@@ -1,9 +1,6 @@
 package com.afif.evoting.webservices
 
-import com.afif.evoting.models.Calon
-import com.afif.evoting.models.Hasil
-import com.afif.evoting.models.Pemilihan
-import com.afif.evoting.models.User
+import com.afif.evoting.models.*
 import com.google.gson.annotations.SerializedName
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -18,7 +15,7 @@ class ApiClient {
     companion object {
 
         private var retrofit : Retrofit? = null
-        private const val ENDPOINT = "https://evoting-osis.herokuapp.com/"
+        private const val ENDPOINT = "https://e-voting.tugas-akhir.com/"
 
         private var option = OkHttpClient.Builder().apply {
             connectTimeout(40, TimeUnit.SECONDS)
@@ -52,7 +49,7 @@ interface ApiService {
     @GET("api/siswa/profile")
     fun profile(
         @Header("Authorization") token : String
-    ) : Call<WrappedResponse<User>>
+    ) : Call<WrappedResponse<Profile>>
 
     @GET("api/calon")
     fun getCalon(

@@ -13,15 +13,30 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
+<androidx.cardview.widget.CardView
+    app:cardCornerRadius="10dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/img_calon"
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="190dp"
             android:layout_marginBottom="5dp"
             android:scaleType="centerCrop"
             android:src="@drawable/img_calon" />
-
+</androidx.cardview.widget.CardView>
+<androidx.cardview.widget.CardView
+    android:layout_marginTop="6dp"
+    android:layout_marginLeft="6dp"
+    android:layout_marginRight="6dp"
+    android:layout_marginBottom="6dp"
+    app:cardCornerRadius="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,13 +92,13 @@
             </LinearLayout>
 
         </LinearLayout>
+</androidx.cardview.widget.CardView>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:background="@android:color/black"
             android:visibility="visible" />
-
 
 
         <TextView
@@ -99,6 +114,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:textAppearance="@android:style/TextAppearance.Small" />
+
 
         <TextView
             android:layout_width="match_parent"
