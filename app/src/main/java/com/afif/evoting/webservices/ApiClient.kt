@@ -15,7 +15,7 @@ class ApiClient {
     companion object {
 
         private var retrofit : Retrofit? = null
-        private const val ENDPOINT = "https://e-voting.tugas-akhir.com/"
+        private const val ENDPOINT = "https://evoting-osis.herokuapp.com/"
 
         private var option = OkHttpClient.Builder().apply {
             connectTimeout(40, TimeUnit.SECONDS)
